@@ -70,18 +70,24 @@ $lots = [
     ]
 ];
 
+date_default_timezone_set("Europe/Moscow");
 
-function rub($price) {
-    $price = ceil($price);
-
-    if ($price >= 1000) {
-        $strprice  = substr($price, 0, -3) . ' ' . substr($price, -3) . ' ' . '<b class="rub">р</b>';
-    } else {
-        $strprice = $price . ' ' . '<b class="rub">р</b>';
-    }
-
-    return $strprice;
+$time = strtotime('tomorrow') - time();
+$hour = floor($time/3600);
+$minute = floor(($time - $hour*3600)/60);
+if ($hour < 10) {
+    $zero = '0';
+} else {
+    $zero = '';
 }
+
+if ($minute < 10) {
+    $zeroM = '0';
+} else {
+    $zeroM = '';
+}
+
+$curtime = $zero . $hour . ' : ' . $zeroM . $minute;
 
 // ставки пользователей, которыми надо заполнить таблицу
 $bets = [
