@@ -1,24 +1,13 @@
 <main>
   <nav class="nav">
     <ul class="nav__list container">
+    <?php $index = 0; ?>
+    <?php while ($index < count($categories)): ?>
       <li class="nav__item">
-        <a href="all-lots.php">Доски и лыжи</a>
+        <a href="all-lots.php"><?= $categories[$index]['title'] ?></a>
       </li>
-      <li class="nav__item">
-        <a href="all-lots.php">Крепления</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.php">Ботинки</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.php">Одежда</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.php">Инструменты</a>
-      </li>
-      <li class="nav__item">
-        <a href="all-lots.php">Разное</a>
-      </li>
+    <?php $index++; ?>
+    <?php endwhile; ?>
     </ul>
   </nav>
   <section class="lot-item container">
@@ -34,7 +23,7 @@
       <div class="lot-item__right">
         <div class="lot-item__state">
           <div class="lot-item__timer timer">
-            <?= $curtime ?>
+            <?= end_date($lot['curtime']) ?>
           </div>
           <div class="lot-item__cost-state">
             <div class="lot-item__rate">
@@ -42,7 +31,7 @@
               <span class="lot-item__cost"><?= rub($lot['price']) ?></span>
             </div>
             <div class="lot-item__min-cost">
-              Мин. ставка <span>12 000 р</span>
+              Мин. ставка <span><?= rub($lot['step']) ?></span>
             </div>
           </div>
           <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">

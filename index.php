@@ -4,8 +4,7 @@ require_once('data.php');
 
 $page_content = include_template('index', [
     'categories' => $categories,
-    'lots' => $lots,
-    'curtime' => $curtime
+    'lots' => $lots
 ]);
 
 $layout_content = include_template('layout', [

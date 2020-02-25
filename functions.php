@@ -21,4 +21,35 @@
 
         return $strprice;
     }
+
+    function end_date($lot_date) {
+        date_default_timezone_set("Europe/Moscow");
+
+        $time = strtotime($lot_date) - time();
+        $hour = floor($time/3600);
+        $minute = floor(($time - $hour*3600)/60);
+        $second = floor($time - $hour*3600 - $minute*60);
+
+        if ($hour < 10) {
+            $zero = '0';
+        } else {
+            $zero = '';
+        }
+
+        if ($minute < 10) {
+            $zeroM = '0';
+        } else {
+            $zeroM = '';
+        }
+
+        if ($second < 10) {
+            $zeroS = '0';
+        } else {
+            $zeroS = '';
+        }
+
+        $curtime = $zero . $hour . ':' . $zeroM . $minute . ':' . $zeroS . $second;
+
+        return $curtime;
+    }
  ?>

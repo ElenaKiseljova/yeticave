@@ -31,7 +31,7 @@
                             <span class="lot__cost"><?= rub($item['price']); ?></span>
                         </div>
                         <div class="lot__timer timer">
-                            <?= $curtime ?>
+                            <?= end_date($item['curtime']) ?>
                         </div>
                     </div>
                 </div>

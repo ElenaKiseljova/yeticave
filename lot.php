@@ -17,22 +17,21 @@ if (isset($_GET['lot_id'])) {
 
 if (!$lot) {
 	http_response_code(404);
+} else {
+    $page_content = include_template('lot', [
+        'categories' => $categories,
+        'lot' => $lot
+    ]);
+
+    $layout_content = include_template('layout', [
+    	'content' => $page_content,
+    	'categories' => $categories,
+        'user_name' => $user_name,
+        'user_avatar' => $user_avatar,
+        'is_auth' => $is_auth,
+    	'title' => $lot['title']
+    ]);
+
+    print($layout_content);
 }
-
-$page_content = include_template('lot', [
-    'categories' => $categories,
-    'lot' => $lot,
-    'curtime' => $curtime
-]);
-
-$layout_content = include_template('layout', [
-	'content' => $page_content,
-	'categories' => $categories,
-    'user_name' => $user_name,
-    'user_avatar' => $user_avatar,
-    'is_auth' => $is_auth,
-	'title' => $lot['title']
-]);
-
-print($layout_content);
- ?>
+?>

@@ -36,6 +36,8 @@ $lots = [
         'categories' => 'Доски и лыжи',
         'title' => '2014 Rossignol District Snowboard',
         'price' => 10999,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-1.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -53,6 +55,8 @@ $lots = [
         'categories' => 'Доски и лыжи',
         'title' => 'DC Ply Mens 2016/2017 Snowboard',
         'price' => 159999,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-2.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -70,6 +74,8 @@ $lots = [
         'categories' => 'Крепления',
         'title' => 'Крепления Union Contact Pro 2015 года размер L/XL',
         'price' => 8000,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-3.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -87,6 +93,8 @@ $lots = [
         'categories' => 'Ботинки',
         'title' => 'Ботинки для сноуборда DC Mutiny Charocal',
         'price' => 10999,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-4.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -104,6 +112,8 @@ $lots = [
         'categories' => 'Одежда',
         'title' => 'Куртка для сноуборда DC Mutiny Charocal',
         'price' => 7500,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-5.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -121,6 +131,8 @@ $lots = [
         'categories' => 'Разное',
         'title' => 'Маска Oakley Canopy',
         'price' => 5400,
+        'step' => 1000,
+        'curtime' => 'tomorrow',
         'img' => 'img/lot-6.jpg',
         'description' => 'Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
           снег
@@ -135,33 +147,6 @@ $lots = [
         'id' => 5
     ]
 ];
-
-date_default_timezone_set("Europe/Moscow");
-
-$time = strtotime('tomorrow') - time();
-$hour = floor($time/3600);
-$minute = floor(($time - $hour*3600)/60);
-$second = floor($time - $hour*3600 - $minute*60);
-
-if ($hour < 10) {
-    $zero = '0';
-} else {
-    $zero = '';
-}
-
-if ($minute < 10) {
-    $zeroM = '0';
-} else {
-    $zeroM = '';
-}
-
-if ($second < 10) {
-    $zeroS = '0';
-} else {
-    $zeroS = '';
-}
-
-$curtime = $zero . $hour . ':' . $zeroM . $minute . ':' . $zeroS . $second;
 
 // ставки пользователей, которыми надо заполнить таблицу
 $bets = [
