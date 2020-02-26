@@ -13,12 +13,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
     if (isset($_FILES['photo2']['name'])) {
-		$path = $_FILES['photo2']['name'];
-		$res = move_uploaded_file($_FILES['photo2']['tmp_name'], 'img/' . $path);
-        $image_lot = 'img/' . basename($_FILES['photo2']['name']);
-        $uploaded = 'form__item--uploaded';
-	} else {
-		$errors['file'] = 'form__item--invalid';
+        $tmp_name = $_FILES['photo2']['tmp_name'];
+		$path = basename($_FILES['photo2']['name']);
+
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+
+        if ($tmp_name) {
+            $file_type = finfo_file($finfo, $tmp_name);
+        }
+
+		if ($file_type !== "image/gif" and $file_type !== "image/png" and $file_type !== "image/jpeg") {
+			$errors['file'] = 'form__item--invalid';
+		} else {
+            $image_lot = 'img/' . $path;
+
+			move_uploaded_file($tmp_name, $image_lot);
+
+			$uploaded = 'form__item--uploaded';
+		}
 	}
 
     if (count($errors)) {
