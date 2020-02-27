@@ -2,6 +2,10 @@
 require_once('functions.php');
 require_once('data.php');
 
+session_start();
+
+$title = 'Главная';
+
 $page_content = include_template('index', [
     'categories' => $categories,
     'lots' => $lots
@@ -10,11 +14,13 @@ $page_content = include_template('index', [
 $layout_content = include_template('layout', [
 	'content' => $page_content,
 	'categories' => $categories,
-    'user_name' => $user_name,
-    'user_avatar' => $user_avatar,
-    'is_auth' => $is_auth,
-	'title' => 'Главная'
+    'user_name' => $_SESSION['user']['name'],
+    'user_avatar' => $_SESSION['user']['avatar'],
+    'is_auth' => $_SESSION['is_auth'],
+	'title' => $title
 ]);
 
 print($layout_content);
+
+var_dump($_SESSION['is_auth']);
 ?>

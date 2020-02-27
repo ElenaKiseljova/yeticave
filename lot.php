@@ -2,6 +2,8 @@
 require_once('functions.php');
 require_once('data.php');
 
+session_start();
+
 $lot = null;
 
 if (isset($_GET['lot_id'])) {
@@ -41,6 +43,7 @@ if (!$lot) {
 	http_response_code(404);
 } else {
     $page_content = include_template('lot', [
+        'is_auth' => $_SESSION['is_auth'],
         'categories' => $categories,
         'lot' => $lot
     ]);
@@ -48,9 +51,9 @@ if (!$lot) {
     $layout_content = include_template('layout', [
     	'content' => $page_content,
     	'categories' => $categories,
-        'user_name' => $user_name,
-        'user_avatar' => $user_avatar,
-        'is_auth' => $is_auth,
+        'user_name' => $_SESSION['user']['name'],
+        'user_avatar' => $_SESSION['user']['avatar'],
+        'is_auth' => $_SESSION['is_auth'],
     	'title' => $lot['title']
     ]);
 

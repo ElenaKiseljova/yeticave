@@ -2,6 +2,10 @@
 require_once('functions.php');
 require_once('data.php');
 
+session_start();
+
+$title = 'История просмотров';
+
 if (isset($_COOKIE['history'])) {
     $lot_id_list = json_decode($_COOKIE['history']);
 } else {
@@ -24,10 +28,10 @@ $page_content = include_template('all-lots', [
 $layout_content = include_template('layout', [
 	'content' => $page_content,
 	'categories' => $categories,
-    'user_name' => $user_name,
-    'user_avatar' => $user_avatar,
-    'is_auth' => $is_auth,
-	'title' => 'История просмотров'
+    'user_name' => $_SESSION['user']['name'],
+    'user_avatar' => $_SESSION['user']['avatar'],
+    'is_auth' => $_SESSION['is_auth'],
+	'title' => $title
 ]);
 
 print($layout_content);

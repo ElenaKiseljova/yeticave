@@ -1,15 +1,5 @@
 <main>
-  <nav class="nav">
-    <ul class="nav__list container">
-        <?php $index = 0; ?>
-        <?php while ($index < count($categories)): ?>
-          <li class="nav__item">
-            <a href="all-lots.php"><?= $categories[$index]['title'] ?></a>
-          </li>
-        <?php $index++; ?>
-        <?php endwhile; ?>
-    </ul>
-  </nav>
+  <?php include("templates/nav.tpl.php"); ?>
   <form class="form form--add-lot container <?= $errors['form'] ?>" action="add-lot.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <div class="form__container-two">

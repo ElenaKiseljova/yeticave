@@ -1,4 +1,16 @@
 <?php
+    function searchUserByEmail($email, $email_bd) {
+        $user = null;
+        foreach ($email_bd as $item) {
+    		if ($item['email'] == $email) {
+    			$user = $item;
+    			break;
+    		}
+    	}
+
+        return $user;
+    }
+
     function include_template($tmp, $vars = array()) {
          if(file_exists('templates/'.$tmp.'.tpl.php')) {
              ob_start();
