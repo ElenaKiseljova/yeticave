@@ -7,6 +7,28 @@ $lot = null;
 if (isset($_GET['lot_id'])) {
 	$lot_id = $_GET['lot_id'];
 
+    /* cookie list of lots */
+
+    $expire = strtotime("+30 days");
+    $path = "/";
+
+    if (isset($_COOKIE['history'])) {
+        $lot_id_list = json_decode($_COOKIE['history']);
+
+        if (!in_array($lot_id, $lot_id_list)) {
+            $lot_id_list[] = $lot_id;
+
+            setcookie('history', json_encode($lot_id_list), $expire, $path);
+        }
+    } else {
+        $lot_id_list = [];
+        $lot_id_list[] = $lot_id;
+
+        setcookie('history', json_encode($lot_id_list), $expire, $path);
+    }
+
+    /* end cookie */
+
 	foreach ($lots as $item) {
 		if ($item['id'] == $lot_id) {
 			$lot = $item;
