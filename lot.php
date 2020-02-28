@@ -43,7 +43,6 @@ if (!$lot) {
 	http_response_code(404);
 } else {
     $page_content = include_template('lot', [
-        'is_auth' => $_SESSION['is_auth'],
         'categories' => $categories,
         'lot' => $lot
     ]);
@@ -53,7 +52,6 @@ if (!$lot) {
     	'categories' => $categories,
         'user_name' => $_SESSION['user']['name'],
         'user_avatar' => $_SESSION['user']['avatar'],
-        'is_auth' => $_SESSION['is_auth'],
     	'title' => $lot['title']
     ]);
 

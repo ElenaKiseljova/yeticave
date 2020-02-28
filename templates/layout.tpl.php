@@ -21,14 +21,13 @@
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
 
-        <?php if ($is_auth): ?>
-            <a class="main-header__add-lot button" href="add-lot.php">Добавить лот</a>
-        <?php endif; ?>
+        <a class="main-header__add-lot button" href="add-lot.php">Добавить лот</a>
+
         <nav class="user-menu">
 
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
-            <?php if ($is_auth): ?>
+            <?php if ($_SESSION['is_auth']): ?>
                 <div class="user-menu__image">
                     <img src="<?= $user_avatar ?>" width="40" height="40" alt="Пользователь">
                 </div>
@@ -37,7 +36,7 @@
                     <a href="logout.php">Выход</a>
                 </div>
             <?php endif; ?>
-            <?php if (!$is_auth): ?>
+            <?php if (!$_SESSION['is_auth']): ?>
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
                         <a href="#">Регистрация</a>

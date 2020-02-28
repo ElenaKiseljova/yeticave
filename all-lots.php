@@ -30,7 +30,6 @@ $layout_content = include_template('layout', [
 	'categories' => $categories,
     'user_name' => $_SESSION['user']['name'],
     'user_avatar' => $_SESSION['user']['avatar'],
-    'is_auth' => $_SESSION['is_auth'],
 	'title' => $title
 ]);
 

@@ -24,7 +24,7 @@
               Мин. ставка <span><?= rub($lot['step']) ?></span>
             </div>
           </div>
-          <?php if ($is_auth) : ?>
+          <?php if ($_SESSION['is_auth']) : ?>
           <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
             <p class="lot-item__form-item">
               <label for="cost">Ваша ставка</label>

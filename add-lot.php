@@ -69,14 +69,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ]);
 }
 
-$layout_content = include_template('layout', [
-	'content' => $page_content,
-	'categories' => $categories,
-    'user_name' => $_SESSION['user']['name'],
-    'user_avatar' => $_SESSION['user']['avatar'],
-    'is_auth' => $_SESSION['is_auth'],
-	'title' => $title
-]);
+if ($_SESSION['is_auth']) {
+    $layout_content = include_template('layout', [
+    	'content' => $page_content,
+    	'categories' => $categories,
+        'user_name' => $_SESSION['user']['name'],
+        'user_avatar' => $_SESSION['user']['avatar'],
+    	'title' => $title
+    ]);
 
-print($layout_content);
+    print($layout_content);
+} else {
+    http_response_code(403);
+}
 ?>
