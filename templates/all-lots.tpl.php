@@ -4,7 +4,7 @@
     <section class="lots">
       <h2>История просмотров</h2>
       <ul class="lots__list">
-        <?php if (isset($lot_list)) : ?>
+    <?php if (isset($lot_list)) : ?>
         <?php foreach ($lot_list as $key => $item) : ?>
         <li class="lots__item lot">
             <div class="lot__image">
