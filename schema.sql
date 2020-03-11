@@ -9,10 +9,6 @@ CREATE TABLE categories (
   name CHAR(128)
 );
 
-INSERT INTO categories (name) VALUES ("Доски и лыжи"), ("Крепления"), ("Ботинки"), ("Одежда"), ("Инструменты"), ("Разное");
-
-SELECT * FROM categories ORDER BY name ASC;
-
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name CHAR(64),
@@ -20,19 +16,10 @@ CREATE TABLE users (
   password CHAR(64),
   avatar_path CHAR(128),
   contacts TEXT,
-  date_registration DATETIME
+  date_registration DATETIME,
+  lot_list CHAR(64),
+  rate_list CHAR(128)
 );
-
-INSERT INTO users
-SET name='Игнат', email='ignat.v@gmail.com', password='$2y$10$OqvsKHQwr0Wk6FMZDoHo1uHoXd4UdxJG/5UDtUiie00XaxMHrW8ka', avatar_path='img/user-1.png', contacts='city, street, apartment, door', date_registration='2020-03-10 14:01:00';
-
-INSERT INTO users
-SET name='Леночка', email='kitty_93@li.ru', password='$2y$10$bWtSjUhwgggtxrnJ7rxmIe63ABubHQs0AS0hgnOo41IEdMHkYoSVa', avatar_path='img/user-2.png', contacts='city, street, apartment, door', date_registration='2019-03-10 11:00:00';
-
-INSERT INTO users
-SET name='Руслан', email='warrior07@mail.ru', password='$2y$10$2OxpEH7narYpkOT1H5cApezuzh10tZEEQ2axgFOaKW.55LxIJBgWW', avatar_path='img/user-3.png', contacts='city, street, apartment, door', date_registration='2018-07-15 14:15:20';
-
-SELECT * FROM users;
 
 CREATE TABLE lots (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,5 +30,22 @@ CREATE TABLE lots (
   date_end DATETIME,
   count_like INT,
   price_begin INT,
-  price_step INT
+  price_step INT,
+  category_id INT,
+  user_id INT,
+  winner INT
+);
+
+CREATE TABLE rates (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  date_rate DATETIME,
+  cost_rate INT,
+  user_id INT,
+  lot_id INT
+);
+
+CREATE TABLE favorite (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  lot_id INT
 );
