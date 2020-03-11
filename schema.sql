@@ -6,6 +6,7 @@ USE yeticave;
 
 CREATE TABLE categories (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  title CHAR(128),
   name CHAR(128)
 );
 
@@ -17,8 +18,8 @@ CREATE TABLE users (
   avatar_path CHAR(128),
   contacts TEXT,
   date_registration DATETIME,
-  lot_list CHAR(64),
-  rate_list CHAR(128)
+  lot_list INT,
+  rate_list INT
 );
 
 CREATE TABLE lots (
