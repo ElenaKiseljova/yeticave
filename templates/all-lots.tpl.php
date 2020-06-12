@@ -194,7 +194,7 @@
     -->
       </ul>
     </section>
-    <?php if (count($lot_list) > 2) : ?>
+    <?php if (isset($lot_list) and count($lot_list) > 2) : ?>
     <ul class="pagination-list">
       <li class="pagination-item pagination-item-prev"><a>Назад</a></li>
       <li class="pagination-item pagination-item-active"><a>1</a></li>
